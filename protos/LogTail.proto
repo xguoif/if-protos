@@ -1,0 +1,12 @@
+syntax = "proto3";
+option java_package = "com.insightfinder.InsightFinderApp.protos";
+option java_outer_classname = "LogTailWrapper";
+message LogTail{
+  string userName = 1;
+  string projectName = 2;
+  string instanceName = 3;
+  string keyword = 4;
+  string data = 5;
+  // an interger multiple of 10, unit is second
+  int32 period = 6;
+}
