@@ -1,0 +1,8 @@
+syntax = "proto3";
+option java_package = "com.insightfinder.InsightFinderApp.protos";
+option java_outer_classname = "AuthWrapper";
+// Heart beat sent to server every 10 seconds
+message Auth{
+    string userName = 1;
+    string token = 2;
+}

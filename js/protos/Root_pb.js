@@ -16,6 +16,8 @@ var protos_Ping_pb = require('../protos/Ping_pb.js');
 goog.object.extend(proto, protos_Ping_pb);
 var protos_LogTail_pb = require('../protos/LogTail_pb.js');
 goog.object.extend(proto, protos_LogTail_pb);
+var protos_Auth_pb = require('../protos/Auth_pb.js');
+goog.object.extend(proto, protos_Auth_pb);
 goog.exportSymbol('proto.protos.Root', null, global);
 goog.exportSymbol('proto.protos.Root.InnerMessageCase', null, global);
 /**
@@ -48,7 +50,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.protos.Root.oneofGroups_ = [[1,2]];
+proto.protos.Root.oneofGroups_ = [[1,2,3]];
 
 /**
  * @enum {number}
@@ -56,7 +58,8 @@ proto.protos.Root.oneofGroups_ = [[1,2]];
 proto.protos.Root.InnerMessageCase = {
   INNER_MESSAGE_NOT_SET: 0,
   PING: 1,
-  LOGTAIL: 2
+  LOGTAIL: 2,
+  AUTH: 3
 };
 
 /**
@@ -98,7 +101,8 @@ proto.protos.Root.prototype.toObject = function(opt_includeInstance) {
 proto.protos.Root.toObject = function(includeInstance, msg) {
   var f, obj = {
     ping: (f = msg.getPing()) && protos_Ping_pb.Ping.toObject(includeInstance, f),
-    logtail: (f = msg.getLogtail()) && protos_LogTail_pb.LogTail.toObject(includeInstance, f)
+    logtail: (f = msg.getLogtail()) && protos_LogTail_pb.LogTail.toObject(includeInstance, f),
+    auth: (f = msg.getAuth()) && protos_Auth_pb.Auth.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -145,6 +149,11 @@ proto.protos.Root.deserializeBinaryFromReader = function(msg, reader) {
       reader.readMessage(value,protos_LogTail_pb.LogTail.deserializeBinaryFromReader);
       msg.setLogtail(value);
       break;
+    case 3:
+      var value = new protos_Auth_pb.Auth;
+      reader.readMessage(value,protos_Auth_pb.Auth.deserializeBinaryFromReader);
+      msg.setAuth(value);
+      break;
     default:
       reader.skipField();
       break;
@@ -188,6 +197,14 @@ proto.protos.Root.serializeBinaryToWriter = function(message, writer) {
       2,
       f,
       protos_LogTail_pb.LogTail.serializeBinaryToWriter
+    );
+  }
+  f = message.getAuth();
+  if (f != null) {
+    writer.writeMessage(
+      3,
+      f,
+      protos_Auth_pb.Auth.serializeBinaryToWriter
     );
   }
 };
@@ -264,6 +281,43 @@ proto.protos.Root.prototype.clearLogtail = function() {
  */
 proto.protos.Root.prototype.hasLogtail = function() {
   return jspb.Message.getField(this, 2) != null;
+};
+
+
+/**
+ * optional Auth auth = 3;
+ * @return {?proto.Auth}
+ */
+proto.protos.Root.prototype.getAuth = function() {
+  return /** @type{?proto.Auth} */ (
+    jspb.Message.getWrapperField(this, protos_Auth_pb.Auth, 3));
+};
+
+
+/**
+ * @param {?proto.Auth|undefined} value
+ * @return {!proto.protos.Root} returns this
+*/
+proto.protos.Root.prototype.setAuth = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 3, proto.protos.Root.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.protos.Root} returns this
+ */
+proto.protos.Root.prototype.clearAuth = function() {
+  return this.setAuth(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.protos.Root.prototype.hasAuth = function() {
+  return jspb.Message.getField(this, 3) != null;
 };
 
 

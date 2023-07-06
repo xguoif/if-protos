@@ -48,6 +48,21 @@ public final class RootWrapper {
      */
     com.insightfinder.InsightFinderApp.protos.LogTailWrapper.LogTailOrBuilder getLogTailOrBuilder();
 
+    /**
+     * <code>.Auth auth = 3;</code>
+     * @return Whether the auth field is set.
+     */
+    boolean hasAuth();
+    /**
+     * <code>.Auth auth = 3;</code>
+     * @return The auth.
+     */
+    com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth getAuth();
+    /**
+     * <code>.Auth auth = 3;</code>
+     */
+    com.insightfinder.InsightFinderApp.protos.AuthWrapper.AuthOrBuilder getAuthOrBuilder();
+
     public com.insightfinder.InsightFinderApp.protos.RootWrapper.Root.InnerMessageCase getInnerMessageCase();
   }
   /**
@@ -123,6 +138,20 @@ public final class RootWrapper {
               innerMessageCase_ = 2;
               break;
             }
+            case 26: {
+              com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.Builder subBuilder = null;
+              if (innerMessageCase_ == 3) {
+                subBuilder = ((com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth) innerMessage_).toBuilder();
+              }
+              innerMessage_ =
+                  input.readMessage(com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth) innerMessage_);
+                innerMessage_ = subBuilder.buildPartial();
+              }
+              innerMessageCase_ = 3;
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -162,6 +191,7 @@ public final class RootWrapper {
             com.google.protobuf.AbstractMessage.InternalOneOfEnum {
       PING(1),
       LOGTAIL(2),
+      AUTH(3),
       INNERMESSAGE_NOT_SET(0);
       private final int value;
       private InnerMessageCase(int value) {
@@ -181,6 +211,7 @@ public final class RootWrapper {
         switch (value) {
           case 1: return PING;
           case 2: return LOGTAIL;
+          case 3: return AUTH;
           case 0: return INNERMESSAGE_NOT_SET;
           default: return null;
         }
@@ -258,6 +289,37 @@ public final class RootWrapper {
       return com.insightfinder.InsightFinderApp.protos.LogTailWrapper.LogTail.getDefaultInstance();
     }
 
+    public static final int AUTH_FIELD_NUMBER = 3;
+    /**
+     * <code>.Auth auth = 3;</code>
+     * @return Whether the auth field is set.
+     */
+    @java.lang.Override
+    public boolean hasAuth() {
+      return innerMessageCase_ == 3;
+    }
+    /**
+     * <code>.Auth auth = 3;</code>
+     * @return The auth.
+     */
+    @java.lang.Override
+    public com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth getAuth() {
+      if (innerMessageCase_ == 3) {
+         return (com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth) innerMessage_;
+      }
+      return com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.getDefaultInstance();
+    }
+    /**
+     * <code>.Auth auth = 3;</code>
+     */
+    @java.lang.Override
+    public com.insightfinder.InsightFinderApp.protos.AuthWrapper.AuthOrBuilder getAuthOrBuilder() {
+      if (innerMessageCase_ == 3) {
+         return (com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth) innerMessage_;
+      }
+      return com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -278,6 +340,9 @@ public final class RootWrapper {
       if (innerMessageCase_ == 2) {
         output.writeMessage(2, (com.insightfinder.InsightFinderApp.protos.LogTailWrapper.LogTail) innerMessage_);
       }
+      if (innerMessageCase_ == 3) {
+        output.writeMessage(3, (com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth) innerMessage_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -294,6 +359,10 @@ public final class RootWrapper {
       if (innerMessageCase_ == 2) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(2, (com.insightfinder.InsightFinderApp.protos.LogTailWrapper.LogTail) innerMessage_);
+      }
+      if (innerMessageCase_ == 3) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, (com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth) innerMessage_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -320,6 +389,10 @@ public final class RootWrapper {
           if (!getLogTail()
               .equals(other.getLogTail())) return false;
           break;
+        case 3:
+          if (!getAuth()
+              .equals(other.getAuth())) return false;
+          break;
         case 0:
         default:
       }
@@ -342,6 +415,10 @@ public final class RootWrapper {
         case 2:
           hash = (37 * hash) + LOGTAIL_FIELD_NUMBER;
           hash = (53 * hash) + getLogTail().hashCode();
+          break;
+        case 3:
+          hash = (37 * hash) + AUTH_FIELD_NUMBER;
+          hash = (53 * hash) + getAuth().hashCode();
           break;
         case 0:
         default:
@@ -521,6 +598,13 @@ public final class RootWrapper {
             result.innerMessage_ = logTailBuilder_.build();
           }
         }
+        if (innerMessageCase_ == 3) {
+          if (authBuilder_ == null) {
+            result.innerMessage_ = innerMessage_;
+          } else {
+            result.innerMessage_ = authBuilder_.build();
+          }
+        }
         result.innerMessageCase_ = innerMessageCase_;
         onBuilt();
         return result;
@@ -577,6 +661,10 @@ public final class RootWrapper {
           }
           case LOGTAIL: {
             mergeLogTail(other.getLogTail());
+            break;
+          }
+          case AUTH: {
+            mergeAuth(other.getAuth());
             break;
           }
           case INNERMESSAGE_NOT_SET: {
@@ -908,6 +996,147 @@ public final class RootWrapper {
         onChanged();;
         return logTailBuilder_;
       }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth, com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.Builder, com.insightfinder.InsightFinderApp.protos.AuthWrapper.AuthOrBuilder> authBuilder_;
+      /**
+       * <code>.Auth auth = 3;</code>
+       * @return Whether the auth field is set.
+       */
+      @java.lang.Override
+      public boolean hasAuth() {
+        return innerMessageCase_ == 3;
+      }
+      /**
+       * <code>.Auth auth = 3;</code>
+       * @return The auth.
+       */
+      @java.lang.Override
+      public com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth getAuth() {
+        if (authBuilder_ == null) {
+          if (innerMessageCase_ == 3) {
+            return (com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth) innerMessage_;
+          }
+          return com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.getDefaultInstance();
+        } else {
+          if (innerMessageCase_ == 3) {
+            return authBuilder_.getMessage();
+          }
+          return com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Auth auth = 3;</code>
+       */
+      public Builder setAuth(com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth value) {
+        if (authBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          innerMessage_ = value;
+          onChanged();
+        } else {
+          authBuilder_.setMessage(value);
+        }
+        innerMessageCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.Auth auth = 3;</code>
+       */
+      public Builder setAuth(
+          com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.Builder builderForValue) {
+        if (authBuilder_ == null) {
+          innerMessage_ = builderForValue.build();
+          onChanged();
+        } else {
+          authBuilder_.setMessage(builderForValue.build());
+        }
+        innerMessageCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.Auth auth = 3;</code>
+       */
+      public Builder mergeAuth(com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth value) {
+        if (authBuilder_ == null) {
+          if (innerMessageCase_ == 3 &&
+              innerMessage_ != com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.getDefaultInstance()) {
+            innerMessage_ = com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.newBuilder((com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth) innerMessage_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            innerMessage_ = value;
+          }
+          onChanged();
+        } else {
+          if (innerMessageCase_ == 3) {
+            authBuilder_.mergeFrom(value);
+          }
+          authBuilder_.setMessage(value);
+        }
+        innerMessageCase_ = 3;
+        return this;
+      }
+      /**
+       * <code>.Auth auth = 3;</code>
+       */
+      public Builder clearAuth() {
+        if (authBuilder_ == null) {
+          if (innerMessageCase_ == 3) {
+            innerMessageCase_ = 0;
+            innerMessage_ = null;
+            onChanged();
+          }
+        } else {
+          if (innerMessageCase_ == 3) {
+            innerMessageCase_ = 0;
+            innerMessage_ = null;
+          }
+          authBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.Auth auth = 3;</code>
+       */
+      public com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.Builder getAuthBuilder() {
+        return getAuthFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Auth auth = 3;</code>
+       */
+      @java.lang.Override
+      public com.insightfinder.InsightFinderApp.protos.AuthWrapper.AuthOrBuilder getAuthOrBuilder() {
+        if ((innerMessageCase_ == 3) && (authBuilder_ != null)) {
+          return authBuilder_.getMessageOrBuilder();
+        } else {
+          if (innerMessageCase_ == 3) {
+            return (com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth) innerMessage_;
+          }
+          return com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Auth auth = 3;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth, com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.Builder, com.insightfinder.InsightFinderApp.protos.AuthWrapper.AuthOrBuilder> 
+          getAuthFieldBuilder() {
+        if (authBuilder_ == null) {
+          if (!(innerMessageCase_ == 3)) {
+            innerMessage_ = com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.getDefaultInstance();
+          }
+          authBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth, com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.Builder, com.insightfinder.InsightFinderApp.protos.AuthWrapper.AuthOrBuilder>(
+                  (com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth) innerMessage_,
+                  getParentForChildren(),
+                  isClean());
+          innerMessage_ = null;
+        }
+        innerMessageCase_ = 3;
+        onChanged();;
+        return authBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -976,26 +1205,29 @@ public final class RootWrapper {
   static {
     java.lang.String[] descriptorData = {
       "\n\021protos/Root.proto\022\006protos\032\021protos/Ping" +
-      ".proto\032\024protos/LogTail.proto\"K\n\004Root\022\025\n\004" +
-      "ping\030\001 \001(\0132\005.PingH\000\022\033\n\007logTail\030\002 \001(\0132\010.L" +
-      "ogTailH\000B\017\n\rinner_messageB8\n)com.insight" +
-      "finder.InsightFinderApp.protosB\013RootWrap" +
-      "perb\006proto3"
+      ".proto\032\024protos/LogTail.proto\032\021protos/Aut" +
+      "h.proto\"b\n\004Root\022\025\n\004ping\030\001 \001(\0132\005.PingH\000\022\033" +
+      "\n\007logTail\030\002 \001(\0132\010.LogTailH\000\022\025\n\004auth\030\003 \001(" +
+      "\0132\005.AuthH\000B\017\n\rinner_messageB8\n)com.insig" +
+      "htfinder.InsightFinderApp.protosB\013RootWr" +
+      "apperb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
           com.insightfinder.InsightFinderApp.protos.PingWrapper.getDescriptor(),
           com.insightfinder.InsightFinderApp.protos.LogTailWrapper.getDescriptor(),
+          com.insightfinder.InsightFinderApp.protos.AuthWrapper.getDescriptor(),
         });
     internal_static_protos_Root_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_protos_Root_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protos_Root_descriptor,
-        new java.lang.String[] { "Ping", "LogTail", "InnerMessage", });
+        new java.lang.String[] { "Ping", "LogTail", "Auth", "InnerMessage", });
     com.insightfinder.InsightFinderApp.protos.PingWrapper.getDescriptor();
     com.insightfinder.InsightFinderApp.protos.LogTailWrapper.getDescriptor();
+    com.insightfinder.InsightFinderApp.protos.AuthWrapper.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)
