@@ -5,6 +5,7 @@ import useWebSocket, { ReadyState } from 'react-use-websocket';
 import {Root} from "./protos/Root_pb"
 import {Ping} from "./protos/Ping_pb"
 import {LogTail} from "./protos/LogTail_pb"
+import {Auth} from "./protos/Auth_pb"
 
 
 const WebSocketDemo = () => {
@@ -55,6 +56,15 @@ const WebSocketDemo = () => {
       root.setLogtail(logTail);
       var bytes = root.serializeBinary();
       sendMessage(bytes);
+      // send auth
+      //var root = new Root();
+      //var auth = new Auth();
+      //auth.setUsername("user");
+      //auth.setToken("*****--*****----***");
+      //root.setAuth(auth);
+      //var bytes = root.serializeBinary();
+      //sendMessage(bytes);
+      
     }
   });
 
