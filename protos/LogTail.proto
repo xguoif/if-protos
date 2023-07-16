@@ -9,4 +9,7 @@ message LogTail{
   string data = 5;
   // an interger multiple of 10, unit is second
   int32 period = 6;
+  //if client end init this taskId, send to backend, backend will check it if exist or not.
+  //if client end doesn't init it(give it a empty string value), backend will generate a uuid, then send it back with task data.
+  string taskId = 7;
 }

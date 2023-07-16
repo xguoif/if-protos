@@ -1,0 +1,8 @@
+syntax = "proto3";
+option java_package = "com.insightfinder.InsightFinderApp.protos";
+option java_outer_classname = "UnsubscribeWrapper";
+message Unsubscribe{
+    //true unsubscribe all tasks with this socket client, or only unsubscribe tasks in taskIds
+    bool unsubscribeAll = 1;
+    repeated string taskIds = 2;
+}

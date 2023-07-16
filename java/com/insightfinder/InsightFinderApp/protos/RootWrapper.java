@@ -63,6 +63,21 @@ public final class RootWrapper {
      */
     com.insightfinder.InsightFinderApp.protos.AuthWrapper.AuthOrBuilder getAuthOrBuilder();
 
+    /**
+     * <code>.Unsubscribe unsubscribe = 4;</code>
+     * @return Whether the unsubscribe field is set.
+     */
+    boolean hasUnsubscribe();
+    /**
+     * <code>.Unsubscribe unsubscribe = 4;</code>
+     * @return The unsubscribe.
+     */
+    com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe getUnsubscribe();
+    /**
+     * <code>.Unsubscribe unsubscribe = 4;</code>
+     */
+    com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.UnsubscribeOrBuilder getUnsubscribeOrBuilder();
+
     public com.insightfinder.InsightFinderApp.protos.RootWrapper.Root.InnerMessageCase getInnerMessageCase();
   }
   /**
@@ -152,6 +167,20 @@ public final class RootWrapper {
               innerMessageCase_ = 3;
               break;
             }
+            case 34: {
+              com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.Builder subBuilder = null;
+              if (innerMessageCase_ == 4) {
+                subBuilder = ((com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe) innerMessage_).toBuilder();
+              }
+              innerMessage_ =
+                  input.readMessage(com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom((com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe) innerMessage_);
+                innerMessage_ = subBuilder.buildPartial();
+              }
+              innerMessageCase_ = 4;
+              break;
+            }
             default: {
               if (!parseUnknownField(
                   input, unknownFields, extensionRegistry, tag)) {
@@ -192,6 +221,7 @@ public final class RootWrapper {
       PING(1),
       LOGTAIL(2),
       AUTH(3),
+      UNSUBSCRIBE(4),
       INNERMESSAGE_NOT_SET(0);
       private final int value;
       private InnerMessageCase(int value) {
@@ -212,6 +242,7 @@ public final class RootWrapper {
           case 1: return PING;
           case 2: return LOGTAIL;
           case 3: return AUTH;
+          case 4: return UNSUBSCRIBE;
           case 0: return INNERMESSAGE_NOT_SET;
           default: return null;
         }
@@ -320,6 +351,37 @@ public final class RootWrapper {
       return com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth.getDefaultInstance();
     }
 
+    public static final int UNSUBSCRIBE_FIELD_NUMBER = 4;
+    /**
+     * <code>.Unsubscribe unsubscribe = 4;</code>
+     * @return Whether the unsubscribe field is set.
+     */
+    @java.lang.Override
+    public boolean hasUnsubscribe() {
+      return innerMessageCase_ == 4;
+    }
+    /**
+     * <code>.Unsubscribe unsubscribe = 4;</code>
+     * @return The unsubscribe.
+     */
+    @java.lang.Override
+    public com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe getUnsubscribe() {
+      if (innerMessageCase_ == 4) {
+         return (com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe) innerMessage_;
+      }
+      return com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.getDefaultInstance();
+    }
+    /**
+     * <code>.Unsubscribe unsubscribe = 4;</code>
+     */
+    @java.lang.Override
+    public com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.UnsubscribeOrBuilder getUnsubscribeOrBuilder() {
+      if (innerMessageCase_ == 4) {
+         return (com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe) innerMessage_;
+      }
+      return com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.getDefaultInstance();
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -343,6 +405,9 @@ public final class RootWrapper {
       if (innerMessageCase_ == 3) {
         output.writeMessage(3, (com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth) innerMessage_);
       }
+      if (innerMessageCase_ == 4) {
+        output.writeMessage(4, (com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe) innerMessage_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -363,6 +428,10 @@ public final class RootWrapper {
       if (innerMessageCase_ == 3) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(3, (com.insightfinder.InsightFinderApp.protos.AuthWrapper.Auth) innerMessage_);
+      }
+      if (innerMessageCase_ == 4) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, (com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe) innerMessage_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -393,6 +462,10 @@ public final class RootWrapper {
           if (!getAuth()
               .equals(other.getAuth())) return false;
           break;
+        case 4:
+          if (!getUnsubscribe()
+              .equals(other.getUnsubscribe())) return false;
+          break;
         case 0:
         default:
       }
@@ -419,6 +492,10 @@ public final class RootWrapper {
         case 3:
           hash = (37 * hash) + AUTH_FIELD_NUMBER;
           hash = (53 * hash) + getAuth().hashCode();
+          break;
+        case 4:
+          hash = (37 * hash) + UNSUBSCRIBE_FIELD_NUMBER;
+          hash = (53 * hash) + getUnsubscribe().hashCode();
           break;
         case 0:
         default:
@@ -605,6 +682,13 @@ public final class RootWrapper {
             result.innerMessage_ = authBuilder_.build();
           }
         }
+        if (innerMessageCase_ == 4) {
+          if (unsubscribeBuilder_ == null) {
+            result.innerMessage_ = innerMessage_;
+          } else {
+            result.innerMessage_ = unsubscribeBuilder_.build();
+          }
+        }
         result.innerMessageCase_ = innerMessageCase_;
         onBuilt();
         return result;
@@ -665,6 +749,10 @@ public final class RootWrapper {
           }
           case AUTH: {
             mergeAuth(other.getAuth());
+            break;
+          }
+          case UNSUBSCRIBE: {
+            mergeUnsubscribe(other.getUnsubscribe());
             break;
           }
           case INNERMESSAGE_NOT_SET: {
@@ -1137,6 +1225,147 @@ public final class RootWrapper {
         onChanged();;
         return authBuilder_;
       }
+
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe, com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.Builder, com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.UnsubscribeOrBuilder> unsubscribeBuilder_;
+      /**
+       * <code>.Unsubscribe unsubscribe = 4;</code>
+       * @return Whether the unsubscribe field is set.
+       */
+      @java.lang.Override
+      public boolean hasUnsubscribe() {
+        return innerMessageCase_ == 4;
+      }
+      /**
+       * <code>.Unsubscribe unsubscribe = 4;</code>
+       * @return The unsubscribe.
+       */
+      @java.lang.Override
+      public com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe getUnsubscribe() {
+        if (unsubscribeBuilder_ == null) {
+          if (innerMessageCase_ == 4) {
+            return (com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe) innerMessage_;
+          }
+          return com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.getDefaultInstance();
+        } else {
+          if (innerMessageCase_ == 4) {
+            return unsubscribeBuilder_.getMessage();
+          }
+          return com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Unsubscribe unsubscribe = 4;</code>
+       */
+      public Builder setUnsubscribe(com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe value) {
+        if (unsubscribeBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          innerMessage_ = value;
+          onChanged();
+        } else {
+          unsubscribeBuilder_.setMessage(value);
+        }
+        innerMessageCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.Unsubscribe unsubscribe = 4;</code>
+       */
+      public Builder setUnsubscribe(
+          com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.Builder builderForValue) {
+        if (unsubscribeBuilder_ == null) {
+          innerMessage_ = builderForValue.build();
+          onChanged();
+        } else {
+          unsubscribeBuilder_.setMessage(builderForValue.build());
+        }
+        innerMessageCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.Unsubscribe unsubscribe = 4;</code>
+       */
+      public Builder mergeUnsubscribe(com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe value) {
+        if (unsubscribeBuilder_ == null) {
+          if (innerMessageCase_ == 4 &&
+              innerMessage_ != com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.getDefaultInstance()) {
+            innerMessage_ = com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.newBuilder((com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe) innerMessage_)
+                .mergeFrom(value).buildPartial();
+          } else {
+            innerMessage_ = value;
+          }
+          onChanged();
+        } else {
+          if (innerMessageCase_ == 4) {
+            unsubscribeBuilder_.mergeFrom(value);
+          }
+          unsubscribeBuilder_.setMessage(value);
+        }
+        innerMessageCase_ = 4;
+        return this;
+      }
+      /**
+       * <code>.Unsubscribe unsubscribe = 4;</code>
+       */
+      public Builder clearUnsubscribe() {
+        if (unsubscribeBuilder_ == null) {
+          if (innerMessageCase_ == 4) {
+            innerMessageCase_ = 0;
+            innerMessage_ = null;
+            onChanged();
+          }
+        } else {
+          if (innerMessageCase_ == 4) {
+            innerMessageCase_ = 0;
+            innerMessage_ = null;
+          }
+          unsubscribeBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>.Unsubscribe unsubscribe = 4;</code>
+       */
+      public com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.Builder getUnsubscribeBuilder() {
+        return getUnsubscribeFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.Unsubscribe unsubscribe = 4;</code>
+       */
+      @java.lang.Override
+      public com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.UnsubscribeOrBuilder getUnsubscribeOrBuilder() {
+        if ((innerMessageCase_ == 4) && (unsubscribeBuilder_ != null)) {
+          return unsubscribeBuilder_.getMessageOrBuilder();
+        } else {
+          if (innerMessageCase_ == 4) {
+            return (com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe) innerMessage_;
+          }
+          return com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.getDefaultInstance();
+        }
+      }
+      /**
+       * <code>.Unsubscribe unsubscribe = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe, com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.Builder, com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.UnsubscribeOrBuilder> 
+          getUnsubscribeFieldBuilder() {
+        if (unsubscribeBuilder_ == null) {
+          if (!(innerMessageCase_ == 4)) {
+            innerMessage_ = com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.getDefaultInstance();
+          }
+          unsubscribeBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe, com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe.Builder, com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.UnsubscribeOrBuilder>(
+                  (com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.Unsubscribe) innerMessage_,
+                  getParentForChildren(),
+                  isClean());
+          innerMessage_ = null;
+        }
+        innerMessageCase_ = 4;
+        onChanged();;
+        return unsubscribeBuilder_;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1206,11 +1435,12 @@ public final class RootWrapper {
     java.lang.String[] descriptorData = {
       "\n\021protos/Root.proto\022\006protos\032\021protos/Ping" +
       ".proto\032\024protos/LogTail.proto\032\021protos/Aut" +
-      "h.proto\"b\n\004Root\022\025\n\004ping\030\001 \001(\0132\005.PingH\000\022\033" +
-      "\n\007logTail\030\002 \001(\0132\010.LogTailH\000\022\025\n\004auth\030\003 \001(" +
-      "\0132\005.AuthH\000B\017\n\rinner_messageB8\n)com.insig" +
-      "htfinder.InsightFinderApp.protosB\013RootWr" +
-      "apperb\006proto3"
+      "h.proto\032\030protos/Unsubscribe.proto\"\207\001\n\004Ro" +
+      "ot\022\025\n\004ping\030\001 \001(\0132\005.PingH\000\022\033\n\007logTail\030\002 \001" +
+      "(\0132\010.LogTailH\000\022\025\n\004auth\030\003 \001(\0132\005.AuthH\000\022#\n" +
+      "\013unsubscribe\030\004 \001(\0132\014.UnsubscribeH\000B\017\n\rin" +
+      "ner_messageB8\n)com.insightfinder.Insight" +
+      "FinderApp.protosB\013RootWrapperb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1218,16 +1448,18 @@ public final class RootWrapper {
           com.insightfinder.InsightFinderApp.protos.PingWrapper.getDescriptor(),
           com.insightfinder.InsightFinderApp.protos.LogTailWrapper.getDescriptor(),
           com.insightfinder.InsightFinderApp.protos.AuthWrapper.getDescriptor(),
+          com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.getDescriptor(),
         });
     internal_static_protos_Root_descriptor =
       getDescriptor().getMessageTypes().get(0);
     internal_static_protos_Root_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_protos_Root_descriptor,
-        new java.lang.String[] { "Ping", "LogTail", "Auth", "InnerMessage", });
+        new java.lang.String[] { "Ping", "LogTail", "Auth", "Unsubscribe", "InnerMessage", });
     com.insightfinder.InsightFinderApp.protos.PingWrapper.getDescriptor();
     com.insightfinder.InsightFinderApp.protos.LogTailWrapper.getDescriptor();
     com.insightfinder.InsightFinderApp.protos.AuthWrapper.getDescriptor();
+    com.insightfinder.InsightFinderApp.protos.UnsubscribeWrapper.getDescriptor();
   }
 
   // @@protoc_insertion_point(outer_class_scope)

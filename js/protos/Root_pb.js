@@ -18,6 +18,8 @@ var protos_LogTail_pb = require('../protos/LogTail_pb.js');
 goog.object.extend(proto, protos_LogTail_pb);
 var protos_Auth_pb = require('../protos/Auth_pb.js');
 goog.object.extend(proto, protos_Auth_pb);
+var protos_Unsubscribe_pb = require('../protos/Unsubscribe_pb.js');
+goog.object.extend(proto, protos_Unsubscribe_pb);
 goog.exportSymbol('proto.protos.Root', null, global);
 goog.exportSymbol('proto.protos.Root.InnerMessageCase', null, global);
 /**
@@ -50,7 +52,7 @@ if (goog.DEBUG && !COMPILED) {
  * @private {!Array<!Array<number>>}
  * @const
  */
-proto.protos.Root.oneofGroups_ = [[1,2,3]];
+proto.protos.Root.oneofGroups_ = [[1,2,3,4]];
 
 /**
  * @enum {number}
@@ -59,7 +61,8 @@ proto.protos.Root.InnerMessageCase = {
   INNER_MESSAGE_NOT_SET: 0,
   PING: 1,
   LOGTAIL: 2,
-  AUTH: 3
+  AUTH: 3,
+  UNSUBSCRIBE: 4
 };
 
 /**
@@ -102,7 +105,8 @@ proto.protos.Root.toObject = function(includeInstance, msg) {
   var f, obj = {
     ping: (f = msg.getPing()) && protos_Ping_pb.Ping.toObject(includeInstance, f),
     logtail: (f = msg.getLogtail()) && protos_LogTail_pb.LogTail.toObject(includeInstance, f),
-    auth: (f = msg.getAuth()) && protos_Auth_pb.Auth.toObject(includeInstance, f)
+    auth: (f = msg.getAuth()) && protos_Auth_pb.Auth.toObject(includeInstance, f),
+    unsubscribe: (f = msg.getUnsubscribe()) && protos_Unsubscribe_pb.Unsubscribe.toObject(includeInstance, f)
   };
 
   if (includeInstance) {
@@ -153,6 +157,11 @@ proto.protos.Root.deserializeBinaryFromReader = function(msg, reader) {
       var value = new protos_Auth_pb.Auth;
       reader.readMessage(value,protos_Auth_pb.Auth.deserializeBinaryFromReader);
       msg.setAuth(value);
+      break;
+    case 4:
+      var value = new protos_Unsubscribe_pb.Unsubscribe;
+      reader.readMessage(value,protos_Unsubscribe_pb.Unsubscribe.deserializeBinaryFromReader);
+      msg.setUnsubscribe(value);
       break;
     default:
       reader.skipField();
@@ -205,6 +214,14 @@ proto.protos.Root.serializeBinaryToWriter = function(message, writer) {
       3,
       f,
       protos_Auth_pb.Auth.serializeBinaryToWriter
+    );
+  }
+  f = message.getUnsubscribe();
+  if (f != null) {
+    writer.writeMessage(
+      4,
+      f,
+      protos_Unsubscribe_pb.Unsubscribe.serializeBinaryToWriter
     );
   }
 };
@@ -318,6 +335,43 @@ proto.protos.Root.prototype.clearAuth = function() {
  */
 proto.protos.Root.prototype.hasAuth = function() {
   return jspb.Message.getField(this, 3) != null;
+};
+
+
+/**
+ * optional Unsubscribe unsubscribe = 4;
+ * @return {?proto.Unsubscribe}
+ */
+proto.protos.Root.prototype.getUnsubscribe = function() {
+  return /** @type{?proto.Unsubscribe} */ (
+    jspb.Message.getWrapperField(this, protos_Unsubscribe_pb.Unsubscribe, 4));
+};
+
+
+/**
+ * @param {?proto.Unsubscribe|undefined} value
+ * @return {!proto.protos.Root} returns this
+*/
+proto.protos.Root.prototype.setUnsubscribe = function(value) {
+  return jspb.Message.setOneofWrapperField(this, 4, proto.protos.Root.oneofGroups_[0], value);
+};
+
+
+/**
+ * Clears the message field making it undefined.
+ * @return {!proto.protos.Root} returns this
+ */
+proto.protos.Root.prototype.clearUnsubscribe = function() {
+  return this.setUnsubscribe(undefined);
+};
+
+
+/**
+ * Returns whether this field is set.
+ * @return {boolean}
+ */
+proto.protos.Root.prototype.hasUnsubscribe = function() {
+  return jspb.Message.getField(this, 4) != null;
 };
 
 

@@ -3,6 +3,7 @@ package protos;
 import "protos/Ping.proto";
 import "protos/LogTail.proto";
 import "protos/Auth.proto";
+import "protos/Unsubscribe.proto";
 option java_package = "com.insightfinder.InsightFinderApp.protos";
 option java_outer_classname = "RootWrapper";
 message Root{
@@ -10,5 +11,6 @@ message Root{
     Ping ping = 1;
     LogTail logTail = 2;
     Auth auth = 3;
+    Unsubscribe unsubscribe = 4;
   }
 }

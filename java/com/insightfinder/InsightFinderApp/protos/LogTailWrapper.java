@@ -87,6 +87,28 @@ public final class LogTailWrapper {
      * @return The period.
      */
     int getPeriod();
+
+    /**
+     * <pre>
+     *if client end init this taskId, send to backend, backend will check it if exist or not.
+     *if client end doesn't init it(give it a empty string value), backend will generate a uuid, then send it back with task data.
+     * </pre>
+     *
+     * <code>string taskId = 7;</code>
+     * @return The taskId.
+     */
+    java.lang.String getTaskId();
+    /**
+     * <pre>
+     *if client end init this taskId, send to backend, backend will check it if exist or not.
+     *if client end doesn't init it(give it a empty string value), backend will generate a uuid, then send it back with task data.
+     * </pre>
+     *
+     * <code>string taskId = 7;</code>
+     * @return The bytes for taskId.
+     */
+    com.google.protobuf.ByteString
+        getTaskIdBytes();
   }
   /**
    * Protobuf type {@code LogTail}
@@ -106,6 +128,7 @@ public final class LogTailWrapper {
       instanceName_ = "";
       keyword_ = "";
       data_ = "";
+      taskId_ = "";
     }
 
     @java.lang.Override
@@ -171,6 +194,12 @@ public final class LogTailWrapper {
             case 48: {
 
               period_ = input.readInt32();
+              break;
+            }
+            case 58: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              taskId_ = s;
               break;
             }
             default: {
@@ -410,6 +439,54 @@ public final class LogTailWrapper {
       return period_;
     }
 
+    public static final int TASKID_FIELD_NUMBER = 7;
+    private volatile java.lang.Object taskId_;
+    /**
+     * <pre>
+     *if client end init this taskId, send to backend, backend will check it if exist or not.
+     *if client end doesn't init it(give it a empty string value), backend will generate a uuid, then send it back with task data.
+     * </pre>
+     *
+     * <code>string taskId = 7;</code>
+     * @return The taskId.
+     */
+    @java.lang.Override
+    public java.lang.String getTaskId() {
+      java.lang.Object ref = taskId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        taskId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <pre>
+     *if client end init this taskId, send to backend, backend will check it if exist or not.
+     *if client end doesn't init it(give it a empty string value), backend will generate a uuid, then send it back with task data.
+     * </pre>
+     *
+     * <code>string taskId = 7;</code>
+     * @return The bytes for taskId.
+     */
+    @java.lang.Override
+    public com.google.protobuf.ByteString
+        getTaskIdBytes() {
+      java.lang.Object ref = taskId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        taskId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private byte memoizedIsInitialized = -1;
     @java.lang.Override
     public final boolean isInitialized() {
@@ -442,6 +519,9 @@ public final class LogTailWrapper {
       if (period_ != 0) {
         output.writeInt32(6, period_);
       }
+      if (!getTaskIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 7, taskId_);
+      }
       unknownFields.writeTo(output);
     }
 
@@ -470,6 +550,9 @@ public final class LogTailWrapper {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(6, period_);
       }
+      if (!getTaskIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(7, taskId_);
+      }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
       return size;
@@ -497,6 +580,8 @@ public final class LogTailWrapper {
           .equals(other.getData())) return false;
       if (getPeriod()
           != other.getPeriod()) return false;
+      if (!getTaskId()
+          .equals(other.getTaskId())) return false;
       if (!unknownFields.equals(other.unknownFields)) return false;
       return true;
     }
@@ -520,6 +605,8 @@ public final class LogTailWrapper {
       hash = (53 * hash) + getData().hashCode();
       hash = (37 * hash) + PERIOD_FIELD_NUMBER;
       hash = (53 * hash) + getPeriod();
+      hash = (37 * hash) + TASKID_FIELD_NUMBER;
+      hash = (53 * hash) + getTaskId().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -665,6 +752,8 @@ public final class LogTailWrapper {
 
         period_ = 0;
 
+        taskId_ = "";
+
         return this;
       }
 
@@ -697,6 +786,7 @@ public final class LogTailWrapper {
         result.keyword_ = keyword_;
         result.data_ = data_;
         result.period_ = period_;
+        result.taskId_ = taskId_;
         onBuilt();
         return result;
       }
@@ -767,6 +857,10 @@ public final class LogTailWrapper {
         }
         if (other.getPeriod() != 0) {
           setPeriod(other.getPeriod());
+        }
+        if (!other.getTaskId().isEmpty()) {
+          taskId_ = other.taskId_;
+          onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
         onChanged();
@@ -1219,6 +1313,107 @@ public final class LogTailWrapper {
         onChanged();
         return this;
       }
+
+      private java.lang.Object taskId_ = "";
+      /**
+       * <pre>
+       *if client end init this taskId, send to backend, backend will check it if exist or not.
+       *if client end doesn't init it(give it a empty string value), backend will generate a uuid, then send it back with task data.
+       * </pre>
+       *
+       * <code>string taskId = 7;</code>
+       * @return The taskId.
+       */
+      public java.lang.String getTaskId() {
+        java.lang.Object ref = taskId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          taskId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <pre>
+       *if client end init this taskId, send to backend, backend will check it if exist or not.
+       *if client end doesn't init it(give it a empty string value), backend will generate a uuid, then send it back with task data.
+       * </pre>
+       *
+       * <code>string taskId = 7;</code>
+       * @return The bytes for taskId.
+       */
+      public com.google.protobuf.ByteString
+          getTaskIdBytes() {
+        java.lang.Object ref = taskId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          taskId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <pre>
+       *if client end init this taskId, send to backend, backend will check it if exist or not.
+       *if client end doesn't init it(give it a empty string value), backend will generate a uuid, then send it back with task data.
+       * </pre>
+       *
+       * <code>string taskId = 7;</code>
+       * @param value The taskId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTaskId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        taskId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *if client end init this taskId, send to backend, backend will check it if exist or not.
+       *if client end doesn't init it(give it a empty string value), backend will generate a uuid, then send it back with task data.
+       * </pre>
+       *
+       * <code>string taskId = 7;</code>
+       * @return This builder for chaining.
+       */
+      public Builder clearTaskId() {
+        
+        taskId_ = getDefaultInstance().getTaskId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <pre>
+       *if client end init this taskId, send to backend, backend will check it if exist or not.
+       *if client end doesn't init it(give it a empty string value), backend will generate a uuid, then send it back with task data.
+       * </pre>
+       *
+       * <code>string taskId = 7;</code>
+       * @param value The bytes for taskId to set.
+       * @return This builder for chaining.
+       */
+      public Builder setTaskIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        taskId_ = value;
+        onChanged();
+        return this;
+      }
       @java.lang.Override
       public final Builder setUnknownFields(
           final com.google.protobuf.UnknownFieldSet unknownFields) {
@@ -1286,12 +1481,12 @@ public final class LogTailWrapper {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\024protos/LogTail.proto\"u\n\007LogTail\022\020\n\010use" +
-      "rName\030\001 \001(\t\022\023\n\013projectName\030\002 \001(\t\022\024\n\014inst" +
-      "anceName\030\003 \001(\t\022\017\n\007keyword\030\004 \001(\t\022\014\n\004data\030" +
-      "\005 \001(\t\022\016\n\006period\030\006 \001(\005B;\n)com.insightfind" +
-      "er.InsightFinderApp.protosB\016LogTailWrapp" +
-      "erb\006proto3"
+      "\n\024protos/LogTail.proto\"\205\001\n\007LogTail\022\020\n\010us" +
+      "erName\030\001 \001(\t\022\023\n\013projectName\030\002 \001(\t\022\024\n\014ins" +
+      "tanceName\030\003 \001(\t\022\017\n\007keyword\030\004 \001(\t\022\014\n\004data" +
+      "\030\005 \001(\t\022\016\n\006period\030\006 \001(\005\022\016\n\006taskId\030\007 \001(\tB;" +
+      "\n)com.insightfinder.InsightFinderApp.pro" +
+      "tosB\016LogTailWrapperb\006proto3"
     };
     descriptor = com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
@@ -1302,7 +1497,7 @@ public final class LogTailWrapper {
     internal_static_LogTail_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_LogTail_descriptor,
-        new java.lang.String[] { "UserName", "ProjectName", "InstanceName", "Keyword", "Data", "Period", });
+        new java.lang.String[] { "UserName", "ProjectName", "InstanceName", "Keyword", "Data", "Period", "TaskId", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

@@ -71,7 +71,8 @@ proto.LogTail.toObject = function(includeInstance, msg) {
     instancename: jspb.Message.getFieldWithDefault(msg, 3, ""),
     keyword: jspb.Message.getFieldWithDefault(msg, 4, ""),
     data: jspb.Message.getFieldWithDefault(msg, 5, ""),
-    period: jspb.Message.getFieldWithDefault(msg, 6, 0)
+    period: jspb.Message.getFieldWithDefault(msg, 6, 0),
+    taskid: jspb.Message.getFieldWithDefault(msg, 7, "")
   };
 
   if (includeInstance) {
@@ -131,6 +132,10 @@ proto.LogTail.deserializeBinaryFromReader = function(msg, reader) {
     case 6:
       var value = /** @type {number} */ (reader.readInt32());
       msg.setPeriod(value);
+      break;
+    case 7:
+      var value = /** @type {string} */ (reader.readString());
+      msg.setTaskid(value);
       break;
     default:
       reader.skipField();
@@ -200,6 +205,13 @@ proto.LogTail.serializeBinaryToWriter = function(message, writer) {
   if (f !== 0) {
     writer.writeInt32(
       6,
+      f
+    );
+  }
+  f = message.getTaskid();
+  if (f.length > 0) {
+    writer.writeString(
+      7,
       f
     );
   }
@@ -311,6 +323,24 @@ proto.LogTail.prototype.getPeriod = function() {
  */
 proto.LogTail.prototype.setPeriod = function(value) {
   return jspb.Message.setProto3IntField(this, 6, value);
+};
+
+
+/**
+ * optional string taskId = 7;
+ * @return {string}
+ */
+proto.LogTail.prototype.getTaskid = function() {
+  return /** @type {string} */ (jspb.Message.getFieldWithDefault(this, 7, ""));
+};
+
+
+/**
+ * @param {string} value
+ * @return {!proto.LogTail} returns this
+ */
+proto.LogTail.prototype.setTaskid = function(value) {
+  return jspb.Message.setProto3StringField(this, 7, value);
 };
 
 
